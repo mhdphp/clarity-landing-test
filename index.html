@@ -3,12 +3,52 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="description" content="Clarity is the collaborative spreadsheet replacement for mid-sized businesses. Real-time editing, smart formulas, and role-based access — free to start." />
+
     <title>Clarity — Spreadsheet Replacement for Modern Teams</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/styles.css" />
   </head>
   <body>
+
+    <nav class="nav" aria-label="Main navigation">
+      <div class="container nav__inner">
+        <a href="#" class="nav__logo">Clarity</a>
+        <ul class="nav__links" role="list">
+          <li><a href="#features" class="nav__link">Features</a></li>
+          <li><a href="#how-it-works" class="nav__link">How It Works</a></li>
+          <li><a href="#testimonials" class="nav__link">Testimonials</a></li>
+          <li><a href="#pricing" class="nav__link">Pricing</a></li>
+        </ul>
+        <div class="nav__actions">
+          <button class="btn btn--accent btn--sm" data-open-modal aria-haspopup="dialog">Start Free</button>
+          <button class="nav__hamburger" aria-label="Open navigation menu" aria-expanded="false" aria-controls="nav-mobile-menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+      <div class="nav__mobile-menu" id="nav-mobile-menu" role="dialog" aria-label="Mobile navigation">
+        <ul role="list">
+          <li><a href="#features" class="nav__link">Features</a></li>
+          <li><a href="#how-it-works" class="nav__link">How It Works</a></li>
+          <li><a href="#testimonials" class="nav__link">Testimonials</a></li>
+          <li><a href="#pricing" class="nav__link">Pricing</a></li>
+        </ul>
+        <button class="btn btn--accent btn--full" data-open-modal>Start Free</button>
+      </div>
+    </nav>
+
+    <main>
+      <!-- Sections 2–9 will be added here -->
+    </main>
+
     <script src="js/main.js" defer></script>
   </body>
 </html>

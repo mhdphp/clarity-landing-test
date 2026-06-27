@@ -14,18 +14,18 @@ Track implementation status. Update this section as each piece is completed.
 
 | File | Status |
 |---|---|
-| `index.html` | ⬜ Not started |
-| `css/reset.css` | ⬜ Not started |
-| `css/variables.css` | ⬜ Not started |
-| `css/styles.css` | ⬜ Not started |
-| `js/main.js` | ⬜ Not started |
-| `assets/` | ⬜ Not started |
+| `index.html` | 🔄 Partial — nav markup + head complete |
+| `css/reset.css` | ✅ Complete |
+| `css/variables.css` | ✅ All 50+ tokens defined |
+| `css/styles.css` | 🔄 Partial — base, container, buttons, nav |
+| `js/main.js` | 🔄 Partial — initNavScroll, initMobileMenu, initSmoothScroll |
+| `assets/` | ✅ Directory created (no assets required) |
 
 ### Sections
 
 | # | Section | HTML | CSS | JS |
 |---|---|---|---|---|
-| 1 | Navigation (`<nav>`) | ⬜ | ⬜ | ⬜ |
+| 1 | Navigation (`<nav>`) | ✅ | ✅ | ✅ |
 | 2 | Hero (`#hero`) | ⬜ | ⬜ | — |
 | 3 | Social Proof (`#social-proof`) | ⬜ | ⬜ | — |
 | 4 | Features (`#features`) | ⬜ | ⬜ | — |
