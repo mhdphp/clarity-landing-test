@@ -294,15 +294,8 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-.hero__typewriter::after {
-  content: '|';
+.hero__heading-accent {
   color: var(--color-accent);
-  animation: blink 0.7s step-end infinite;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
 }
 
 .hero__sub {

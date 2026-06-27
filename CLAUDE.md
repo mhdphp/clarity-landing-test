@@ -18,7 +18,7 @@ Track implementation status. Update this section as each piece is completed.
 | `css/reset.css` | ✅ Complete |
 | `css/variables.css` | ✅ All 50+ tokens defined |
 | `css/styles.css` | ✅ Complete — all sections, animations, modal |
-| `js/main.js` | ✅ Complete — all 7 init functions |
+| `js/main.js` | ✅ Complete — 6 init functions (typewriter removed) |
 | `assets/` | ✅ Directory created (no assets required) |
 
 ### Sections
@@ -79,7 +79,7 @@ Project2 - Clarity Landing/
 | `css/reset.css` | Minimal modern reset (box-sizing, margin/padding zero, img max-width). |
 | `css/variables.css` | All CSS custom properties (design tokens). No rules, only `:root { }`. |
 | `css/styles.css` | All layout, component, and utility styles. Imports nothing — relies on cascade order. |
-| `js/main.js` | All interactivity: nav scroll behavior, mobile menu toggle, smooth scroll, scroll animations, typewriter, modal, pricing toggle. `defer` attribute handles load order. |
+| `js/main.js` | All interactivity: nav scroll behavior, mobile menu toggle, smooth scroll, scroll animations, modal, pricing toggle. `defer` attribute handles load order. |
 
 ---
 
@@ -791,19 +791,7 @@ When `is-visible` is added: `opacity: 1; transform: none`. Transition uses `var(
 
 Apply `animate-on-scroll` to: `.features__card`, `.how-it-works__step`, `.testimonials__card`, `.pricing__card`, `.section__header`, `.social-proof__item` (with `--fade`), `.cta-final__inner`.
 
-**5. `initTypewriter()`**
-Targets `.hero__heading`. Extracts the first line ("Stop Managing Data.") as static text and cycles the second line through phrases with a typing/deleting effect:
-```js
-const phrases = [
-  'Start Understanding It.',
-  'Start Moving Faster.',
-  'Start Collaborating Better.',
-  'Start Seeing Clearly.',
-];
-```
-Typing speed: 60ms per character. Deleting speed: 35ms per character. Pause at full phrase: 2200ms. Pause after delete: 400ms. Use a `<span class="hero__typewriter">` inside `<h1>` for the animated text.
-
-**6. `initModal()`**
+**5. `initModal()`**
 Opens `#signup-modal` overlay when any element with `data-open-modal` attribute is clicked. Modal structure:
 - `<div id="signup-modal" class="modal" hidden aria-modal="true" role="dialog" aria-labelledby="modal-title">`
 - Contains `<div class="modal__backdrop">` (click to close) and `<div class="modal__panel">`.
@@ -818,7 +806,7 @@ Features:
 - On valid submit: hide form, show `<div class="modal__success">` with a success message. Do not actually submit.
 - When closed: restore `body.overflow`, return focus to the element that opened the modal.
 
-**7. `initPricingToggle()`**
+**6. `initPricingToggle()`**
 Targets `.pricing__toggle-btn`. On click: toggle `aria-checked` between `"true"` and `"false"`.
 - When annual (`aria-checked="true"`): update all `[data-annual]` elements to show their annual value; show all `.pricing__annual-note` elements (remove `hidden`).
 - When monthly (`aria-checked="false"`): update all `[data-monthly]` elements to show their monthly value; hide all `.pricing__annual-note` elements (add `hidden`).
@@ -831,7 +819,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initSmoothScroll();
   initAnimations();
-  initTypewriter();
   initModal();
   initPricingToggle();
 });
@@ -981,7 +968,7 @@ Before considering the build complete, every item below must pass.
 - [x] Sub-heading copy is present
 - [x] Both CTA buttons are present with correct href values
 - [x] Trust nudge line is present below the buttons
-- [x] Typewriter span `.hero__typewriter` is present inside `<h1>`
+- [x] Second heading line uses `.hero__heading-accent` span with `color: var(--color-accent)` (green)
 
 ### Social Proof
 - [x] Exactly 4 stat items are present
@@ -1037,7 +1024,6 @@ Before considering the build complete, every item below must pass.
 - [x] `initMobileMenu` toggles menu and `aria-expanded`
 - [x] `initSmoothScroll` intercepts all `#` anchor clicks with nav offset
 - [x] `initAnimations` uses `IntersectionObserver` and applies `is-visible` with stagger
-- [x] `initTypewriter` cycles through 4 phrases
 - [x] `initModal` opens/closes with focus trap, ESC, backdrop click, validation, and success state
 - [x] `initPricingToggle` updates prices and shows/hides annual note
 - [x] No `var` declarations exist in `main.js`
