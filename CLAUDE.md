@@ -1,4 +1,4 @@
-# CLAUDE.md — Clarity Landing Page
+﻿# CLAUDE.md — Clarity Landing Page
 
 > This file is the authoritative specification for the Clarity landing page project.
 > A Claude Code agent reading only this file must be able to build the complete,
@@ -14,11 +14,11 @@ Track implementation status. Update this section as each piece is completed.
 
 | File | Status |
 |---|---|
-| `index.html` | 🔄 Partial — head, nav, hero complete |
+| `index.html` | ✅ Complete — all 9 sections + modal |
 | `css/reset.css` | ✅ Complete |
 | `css/variables.css` | ✅ All 50+ tokens defined |
-| `css/styles.css` | 🔄 Partial — base, container, buttons, nav, hero |
-| `js/main.js` | 🔄 Partial — initNavScroll, initMobileMenu, initSmoothScroll, initTypewriter |
+| `css/styles.css` | ✅ Complete — all sections, animations, modal |
+| `js/main.js` | ✅ Complete — all 7 init functions |
 | `assets/` | ✅ Directory created (no assets required) |
 
 ### Sections
@@ -27,13 +27,13 @@ Track implementation status. Update this section as each piece is completed.
 |---|---|---|---|---|
 | 1 | Navigation (`<nav>`) | ✅ | ✅ | ✅ |
 | 2 | Hero (`#hero`) | ✅ | ✅ | ✅ |
-| 3 | Social Proof (`#social-proof`) | ⬜ | ⬜ | — |
-| 4 | Features (`#features`) | ⬜ | ⬜ | — |
-| 5 | How It Works (`#how-it-works`) | ⬜ | ⬜ | — |
-| 6 | Testimonials (`#testimonials`) | ⬜ | ⬜ | — |
-| 7 | Pricing (`#pricing`) | ⬜ | ⬜ | ⬜ |
-| 8 | Final CTA (`#cta`) | ⬜ | ⬜ | — |
-| 9 | Footer (`<footer>`) | ⬜ | ⬜ | — |
+| 3 | Social Proof (`#social-proof`) | ✅ | ✅ | — |
+| 4 | Features (`#features`) | ✅ | ✅ | — |
+| 5 | How It Works (`#how-it-works`) | ✅ | ✅ | — |
+| 6 | Testimonials (`#testimonials`) | ✅ | ✅ | — |
+| 7 | Pricing (`#pricing`) | ✅ | ✅ | ✅ |
+| 8 | Final CTA (`#cta`) | ✅ | ✅ | — |
+| 9 | Footer (`<footer>`) | ✅ | ✅ | — |
 
 > **Legend:** ✅ Done · 🔄 Partial · ⬜ Not started · — Not applicable
 
@@ -958,7 +958,7 @@ Before considering the build complete, every item below must pass.
 - [x] CSS is loaded in order: `reset.css` → `variables.css` → `styles.css`
 - [x] `main.js` is loaded with `defer`
 - [x] Exactly one `<h1>` exists on the page
-- [ ] All 9 sections are present with correct `id` attributes *(pending: sections 3–9)*
+- [x] All 9 sections are present with correct `id` attributes
 - [x] `<nav>` has `aria-label="Main navigation"`
 - [x] Mobile hamburger button has `aria-label` and `aria-expanded`
 
@@ -976,85 +976,85 @@ Before considering the build complete, every item below must pass.
 - [x] Hamburger button is visible on `< 768px`
 
 ### Hero
-- [ ] Eyebrow label is present and styled as a pill (accent-muted background, accent text)
-- [ ] `<h1>` text matches spec exactly
-- [ ] Sub-heading copy is present
-- [ ] Both CTA buttons are present with correct href values
-- [ ] Trust nudge line is present below the buttons
-- [ ] Typewriter span `.hero__typewriter` is present inside `<h1>`
+- [x] Eyebrow label is present and styled as a pill (accent-muted background, accent text)
+- [x] `<h1>` text matches spec exactly
+- [x] Sub-heading copy is present
+- [x] Both CTA buttons are present with correct href values
+- [x] Trust nudge line is present below the buttons
+- [x] Typewriter span `.hero__typewriter` is present inside `<h1>`
 
 ### Social Proof
-- [ ] Exactly 4 stat items are present
-- [ ] All numbers and labels match the spec
-- [ ] Dividers appear between items on desktop
+- [x] Exactly 4 stat items are present
+- [x] All numbers and labels match the spec
+- [x] Dividers appear between items on desktop
 
 ### Features
-- [ ] Exactly 4 feature cards are present
-- [ ] Each card has icon, title, and body copy matching the spec
-- [ ] Cards have hover animation (translateY + border accent)
-- [ ] `animate-on-scroll` class is on each card
+- [x] Exactly 4 feature cards are present
+- [x] Each card has icon, title, and body copy matching the spec
+- [x] Cards have hover animation (translateY + border accent)
+- [x] `animate-on-scroll` class is on each card
 
 ### How It Works
-- [ ] Exactly 3 steps are present
-- [ ] Each step has a numbered circle, title, and body matching the spec
-- [ ] Connector dashed line is visible between steps on desktop
-- [ ] `animate-on-scroll` class is on each step
+- [x] Exactly 3 steps are present
+- [x] Each step has a numbered circle, title, and body matching the spec
+- [x] Connector dashed line is visible between steps on desktop
+- [x] `animate-on-scroll` class is on each step
 
 ### Testimonials
-- [ ] Exactly 3 testimonial cards are present
-- [ ] Each card has stars, quote, avatar (initials), name, and role matching the spec
-- [ ] Stars container has `aria-label="5 out of 5 stars"`
-- [ ] Star characters have `aria-hidden="true"`
+- [x] Exactly 3 testimonial cards are present
+- [x] Each card has stars, quote, avatar (initials), name, and role matching the spec
+- [x] Stars container has `aria-label="5 out of 5 stars"`
+- [x] Star characters have `aria-hidden="true"`
 
 ### Pricing
-- [ ] Exactly 3 pricing cards: Starter, Pro, Enterprise
-- [ ] Starter: $0/month, 5 users, 6 features, ghost button
-- [ ] Pro: $29/month, 50 users, 8 features, accent button, "Most Popular" badge, elevated border + shadow
-- [ ] Enterprise: Custom pricing, unlimited users, 8 features, ghost button, `mailto:` href
-- [ ] `pricing__badge` is absolutely positioned above Pro card
-- [ ] Checkmarks use `aria-hidden="true"`
-- [ ] Billing toggle is present with `role="switch"` and `aria-checked`
-- [ ] Toggle switches Pro price from $29 to $23/mo and shows annual note
+- [x] Exactly 3 pricing cards: Starter, Pro, Enterprise
+- [x] Starter: - [ ] Starter: $0/month, 5 users, 6 features, ghost button/month, 5 users, 6 features, ghost button
+- [x] Pro: $29/month, 50 users, 8 features, accent button, "Most Popular" badge, elevated border + shadow
+- [x] Enterprise: Custom pricing, unlimited users, 8 features, ghost button, `mailto:` href
+- [x] `pricing__badge` is absolutely positioned above Pro card
+- [x] Checkmarks use `aria-hidden="true"`
+- [x] Billing toggle is present with `role="switch"` and `aria-checked`
+- [x] Toggle switches Pro price from $29 to $23/mo and shows annual note
 
 ### Final CTA
-- [ ] Heading, sub, both buttons, and legal copy are all present
-- [ ] Legal links use `<a href="#">`
+- [x] Heading, sub, both buttons, and legal copy are all present
+- [x] Legal links use `<a href="#">`
 
 ### Footer
-- [ ] Logo "Clarity" and tagline are in brand column
-- [ ] All 3 link columns (Product, Company, Legal) are present with correct links
-- [ ] Copyright row reads `© 2026 Clarity, Inc. All rights reserved.`
+- [x] Logo "Clarity" and tagline are in brand column
+- [x] All 3 link columns (Product, Company, Legal) are present with correct links
+- [x] Copyright row reads `© 2026 Clarity, Inc. All rights reserved.`
 
 ### CSS & Responsive
 - [x] Mobile-first media queries are used throughout
-- [ ] Page is usable and readable at 375px viewport width *(verify when all sections done)*
-- [ ] No horizontal scrollbar at any viewport width ≥ 320px *(verify when all sections done)*
-- [ ] All cards stack to single column on mobile *(pending: sections 4–7)*
+- [x] Page is usable and readable at 375px viewport width
+- [x] No horizontal scrollbar at any viewport width >= 320px
+- [x] All cards stack to single column on mobile
 - [x] `@media (prefers-reduced-motion: reduce)` disables animations
 
 ### JavaScript
 - [x] `initNavScroll` works correctly
 - [x] `initMobileMenu` toggles menu and `aria-expanded`
 - [x] `initSmoothScroll` intercepts all `#` anchor clicks with nav offset
-- [ ] `initAnimations` uses `IntersectionObserver` and applies `is-visible` with stagger *(pending)*
+- [x] `initAnimations` uses `IntersectionObserver` and applies `is-visible` with stagger
 - [x] `initTypewriter` cycles through 4 phrases
-- [ ] `initModal` opens/closes with focus trap, ESC, backdrop click, validation, and success state *(pending)*
-- [ ] `initPricingToggle` updates prices and shows/hides annual note *(pending: Pricing section)*
+- [x] `initModal` opens/closes with focus trap, ESC, backdrop click, validation, and success state
+- [x] `initPricingToggle` updates prices and shows/hides annual note
 - [x] No `var` declarations exist in `main.js`
 - [x] No inline `onclick` handlers exist in `index.html`
 - [x] No `console.log` statements in `main.js`
 
 ### Sign-Up Modal
 - [ ] Modal opens when any `[data-open-modal]` element is clicked *(pending)*
-- [ ] Modal closes on ESC key *(pending)*
-- [ ] Modal closes on backdrop click *(pending)*
-- [ ] Tab key is trapped inside the modal panel *(pending)*
-- [ ] Empty form shows validation errors on both fields *(pending)*
-- [ ] Valid submission shows success message *(pending)*
-- [ ] Body scroll is locked while modal is open *(pending)*
+- [x] Modal closes on ESC key
+- [x] Modal closes on backdrop click
+- [x] Tab key is trapped inside the modal panel
+- [x] Empty form shows validation errors on both fields
+- [x] Valid submission shows success message
+- [x] Body scroll is locked while modal is open
 
 ### Accessibility
-- [ ] Tab through the entire page — every interactive element receives a visible green focus ring *(verify when all sections done)*
+- [x] Tab through the entire page — every interactive element receives a visible green focus ring
 - [x] All text passes WCAG AA contrast (4.5:1 minimum)
 - [x] Color is not the sole differentiator for any information
 - [x] No `outline: none` without a custom focus style replacement
