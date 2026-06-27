@@ -18,7 +18,7 @@ Track implementation status. Update this section as each piece is completed.
 | `css/reset.css` | ✅ Complete |
 | `css/variables.css` | ✅ All 50+ tokens defined |
 | `css/styles.css` | ✅ Complete — all sections, animations, modal |
-| `js/main.js` | ✅ Complete — 7 init functions (incl. typewriter) |
+| `js/main.js` | ✅ Complete — 8 init functions (incl. typewriter, counters) |
 | `assets/` | ✅ Directory created (no assets required) |
 
 ### Sections
@@ -779,19 +779,43 @@ Toggle `nav--open` class on `<nav>` when hamburger button is clicked. When `nav-
 For all anchor tags whose `href` starts with `#`, prevent default and use `window.scrollTo({ top: targetElement.offsetTop - NAV_HEIGHT, behavior: 'smooth' })`.
 
 **4. `initAnimations()`**
-Use `IntersectionObserver` with threshold `0.1`. Observe all elements with class `animate-on-scroll`. When they intersect, add class `is-visible`. Automatically apply `--stagger-delay` CSS custom property (increments of 90ms) to sibling `.animate-on-scroll` elements within the same parent.
+Use `IntersectionObserver` with `threshold: 0.12` and `rootMargin: '0px 0px -60px 0px'` (triggers 60px before the element fully enters the viewport). Observe all elements with class `animate-on-scroll`. When they intersect, add class `is-visible`. Automatically apply `--stagger-delay` CSS custom property (increments of 120ms) to sibling `.animate-on-scroll` elements within the same parent.
 
 Directional variants via modifier classes:
-- `.animate-on-scroll` — fade up (default): starts `opacity: 0; transform: translateY(24px)`
-- `.animate-on-scroll--left` — fade from left: starts `opacity: 0; transform: translateX(-24px)`
-- `.animate-on-scroll--right` — fade from right: starts `opacity: 0; transform: translateX(24px)`
+- `.animate-on-scroll` — fade up (default): starts `opacity: 0; transform: translateY(40px)`
+- `.animate-on-scroll--left` — fade from left: starts `opacity: 0; transform: translateX(-40px)`
+- `.animate-on-scroll--right` — fade from right: starts `opacity: 0; transform: translateX(40px)`
 - `.animate-on-scroll--fade` — fade only: starts `opacity: 0` (no transform)
+- `.animate-on-scroll--scale` — scale + lift: starts `opacity: 0; transform: scale(0.93) translateY(16px)`
 
-When `is-visible` is added: `opacity: 1; transform: none`. Transition uses `var(--transition-slow)` delayed by `var(--stagger-delay, 0ms)`.
+When `is-visible` is added: `opacity: 1; transform: none`. Transition uses `600ms cubic-bezier(0.22, 1, 0.36, 1)` (ease-out expo) delayed by `var(--stagger-delay, 0ms)`.
 
-Apply `animate-on-scroll` to: `.features__card`, `.how-it-works__step`, `.testimonials__card`, `.pricing__card`, `.section__header`, `.social-proof__item` (with `--fade`), `.cta-final__inner`.
+Apply `animate-on-scroll` to: `.features__card`, `.how-it-works__step`, `.testimonials__card`, `.pricing__card`, `.section__header`, `.social-proof__item` (with `--fade`), `.cta-final__inner`, hero elements (`.hero__eyebrow`, `.hero__heading`, `.hero__sub`, `.hero__cta-group`, `.hero__trust`), footer columns (`.footer__brand`, `.footer__col`).
 
-**5. `initModal()`**
+Directional assignments:
+
+- Features: card 1 `--left`, cards 2–3 default, card 4 `--right`
+- How It Works: step 1 `--left`, step 2 default, step 3 `--right`
+- Testimonials: card 1 `--left`, card 2 default, card 3 `--right`
+- Pricing: Starter `--left`, Pro default, Enterprise `--right`
+- Footer: brand `--left`, two Product/Company cols default, Legal col `--right`
+
+**5. `initCounters()`**
+Animates number counters in `.social-proof__number` elements on scroll-into-view.
+
+- Observes all `.social-proof__number[data-count-to]` elements with `threshold: 0.5`.
+- On intersection: reads `data-count-to` (target number), `data-count-suffix` (e.g. `"+"`, `"%"`, `"/5"`), and `data-count-decimals` (default `0`).
+- Animates from 0 to the target over `DURATION = 1400ms` using a cubic ease-out (`1 - (1-progress)³`) via `requestAnimationFrame`.
+- Formats integer counts with `toLocaleString()` (adds thousand separators); decimal counts with `.toFixed(decimals)`.
+- Fires once per element (unobserves after trigger). The `< 5 min` stat has no `data-count-to` and stays static.
+
+HTML data attributes required on `.social-proof__number`:
+
+- `data-count-to="10000" data-count-suffix="+"` → animates to `10,000+`
+- `data-count-to="98" data-count-suffix="%"` → animates to `98%`
+- `data-count-to="4.9" data-count-suffix="/5" data-count-decimals="1"` → animates to `4.9/5`
+
+**6. `initModal()`**
 Opens `#signup-modal` overlay when any element with `data-open-modal` attribute is clicked. Modal structure:
 - `<div id="signup-modal" class="modal" hidden aria-modal="true" role="dialog" aria-labelledby="modal-title">`
 - Contains `<div class="modal__backdrop">` (click to close) and `<div class="modal__panel">`.
@@ -806,13 +830,13 @@ Features:
 - On valid submit: hide form, show `<div class="modal__success">` with a success message. Do not actually submit.
 - When closed: restore `body.overflow`, return focus to the element that opened the modal.
 
-**6. `initPricingToggle()`**
+**7. `initPricingToggle()`**
 Targets `.pricing__toggle-btn`. On click: toggle `aria-checked` between `"true"` and `"false"`.
 - When annual (`aria-checked="true"`): update all `[data-annual]` elements to show their annual value; show all `.pricing__annual-note` elements (remove `hidden`).
 - When monthly (`aria-checked="false"`): update all `[data-monthly]` elements to show their monthly value; hide all `.pricing__annual-note` elements (add `hidden`).
 - Toggle button visual: background switches between `var(--color-border)` (monthly) and `var(--color-accent)` (annual); thumb translates right.
 
-**7. `initTypewriter()`**
+**8. `initTypewriter()`**
 Types out the `.hero__heading-accent` span ("Start Understanding It.") character by character on page load.
 
 - Checks `window.matchMedia('(prefers-reduced-motion: reduce)')` — if true, returns immediately and leaves the text static.
@@ -829,6 +853,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initSmoothScroll();
   initAnimations();
+  initCounters();
   initModal();
   initPricingToggle();
   initTypewriter();
@@ -1043,7 +1068,7 @@ Before considering the build complete, every item below must pass.
 - [x] No `console.log` statements in `main.js`
 
 ### Sign-Up Modal
-- [ ] Modal opens when any `[data-open-modal]` element is clicked *(pending)*
+- [x] Modal opens when any `[data-open-modal]` element is clicked
 - [x] Modal closes on ESC key
 - [x] Modal closes on backdrop click
 - [x] Tab key is trapped inside the modal panel

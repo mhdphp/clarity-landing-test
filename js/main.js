@@ -65,18 +65,54 @@ const initAnimations = () => {
       entry.target.classList.add('is-visible');
       observer.unobserve(entry.target);
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
 
   const parents = new Set();
   animatedEls.forEach(el => parents.add(el.parentElement));
   parents.forEach(parent => {
     const siblings = [...parent.querySelectorAll('.animate-on-scroll')];
     siblings.forEach((el, i) => {
-      el.style.setProperty('--stagger-delay', `${i * 90}ms`);
+      el.style.setProperty('--stagger-delay', `${i * 120}ms`);
     });
   });
 
   animatedEls.forEach(el => observer.observe(el));
+};
+
+const initCounters = () => {
+  const DURATION = 1400;
+
+  const animateCount = (el, to, decimals, suffix) => {
+    const start = performance.now();
+    const step = ts => {
+      const progress = Math.min((ts - start) / DURATION, 1);
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const current = to * ease;
+      const formatted = decimals > 0
+        ? current.toFixed(decimals)
+        : Math.floor(current).toLocaleString();
+      el.textContent = formatted + suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  };
+
+  const counters = document.querySelectorAll('.social-proof__number[data-count-to]');
+  if (!counters.length) return;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const to = parseFloat(el.getAttribute('data-count-to'));
+      const suffix = el.getAttribute('data-count-suffix') ?? '';
+      const decimals = parseInt(el.getAttribute('data-count-decimals') ?? '0', 10);
+      animateCount(el, to, decimals, suffix);
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  counters.forEach(el => observer.observe(el));
 };
 
 const initModal = () => {
@@ -192,7 +228,10 @@ const initTypewriter = () => {
 
   const fullText = el.textContent.trim();
   const TYPING_SPEED = 60;
+  const DELETING_SPEED = 35;
   const TYPING_DELAY = 400;
+  const PAUSE_AFTER_TYPE = 2000;
+  const PAUSE_AFTER_DELETE = 500;
 
   const textNode = document.createTextNode('');
   const cursor = document.createElement('span');
@@ -203,11 +242,21 @@ const initTypewriter = () => {
 
   const type = () => {
     if (i < fullText.length) {
-      textNode.textContent = fullText.slice(0, i + 1);
       i++;
+      textNode.textContent = fullText.slice(0, i);
       setTimeout(type, TYPING_SPEED);
     } else {
-      setTimeout(() => cursor.classList.add('hero__cursor--done'), 1200);
+      setTimeout(erase, PAUSE_AFTER_TYPE);
+    }
+  };
+
+  const erase = () => {
+    if (i > 0) {
+      i--;
+      textNode.textContent = fullText.slice(0, i);
+      setTimeout(erase, DELETING_SPEED);
+    } else {
+      setTimeout(type, PAUSE_AFTER_DELETE);
     }
   };
 
@@ -248,6 +297,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initSmoothScroll();
   initAnimations();
+  initCounters();
   initModal();
   initPricingToggle();
   initTypewriter();

@@ -952,23 +952,27 @@ h1, h2, h3, h4, h5, h6 {
 
 .animate-on-scroll {
   opacity: 0;
-  transform: translateY(24px);
+  transform: translateY(40px);
   transition:
-    opacity var(--transition-slow),
-    transform var(--transition-slow);
+    opacity 600ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 600ms cubic-bezier(0.22, 1, 0.36, 1);
   transition-delay: var(--stagger-delay, 0ms);
 }
 
 .animate-on-scroll--left {
-  transform: translateX(-24px);
+  transform: translateX(-40px);
 }
 
 .animate-on-scroll--right {
-  transform: translateX(24px);
+  transform: translateX(40px);
 }
 
 .animate-on-scroll--fade {
   transform: none;
+}
+
+.animate-on-scroll--scale {
+  transform: scale(0.93) translateY(16px);
 }
 
 .animate-on-scroll.is-visible {
