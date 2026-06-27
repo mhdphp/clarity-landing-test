@@ -17,3 +17,4 @@ desktop.ini
 # Node (if tooling is ever added)
 node_modules/
 package-lock.json
+test-results
