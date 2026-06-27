@@ -1,0 +1,16 @@
+{
+  "name": "project2---clarity-landing",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node node_modules/@playwright/test/cli.js test",
+    "test:headed": "node node_modules/@playwright/test/cli.js test --headed"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1"
+  }
+}
