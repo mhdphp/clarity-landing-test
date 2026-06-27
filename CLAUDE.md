@@ -947,33 +947,33 @@ The modal is the page's primary conversion mechanism. It MUST be built to the fo
 Before considering the build complete, every item below must pass.
 
 ### HTML Structure
-- [ ] `<!DOCTYPE html>` is present
-- [ ] `<html lang="en">` is set
-- [ ] `<title>` is exactly: `Clarity — Spreadsheet Replacement for Modern Teams`
-- [ ] `<meta charset="UTF-8">` is present
-- [ ] `<meta name="viewport" content="width=device-width, initial-scale=1.0">` is present
-- [ ] `<meta name="color-scheme" content="dark">` is present
-- [ ] `<meta name="description">` is present with the specified content
-- [ ] Google Fonts preconnect links are present, URL includes `&display=swap`
-- [ ] CSS is loaded in order: `reset.css` → `variables.css` → `styles.css`
-- [ ] `main.js` is loaded with `defer`
-- [ ] Exactly one `<h1>` exists on the page
-- [ ] All 9 sections are present with correct `id` attributes: `hero`, `social-proof`, `features`, `how-it-works`, `testimonials`, `pricing`, `cta`, plus `<nav>` and `<footer>`
-- [ ] `<nav>` has `aria-label="Main navigation"`
-- [ ] Mobile hamburger button has `aria-label` and `aria-expanded`
+- [x] `<!DOCTYPE html>` is present
+- [x] `<html lang="en">` is set
+- [x] `<title>` is exactly: `Clarity — Spreadsheet Replacement for Modern Teams`
+- [x] `<meta charset="UTF-8">` is present
+- [x] `<meta name="viewport" content="width=device-width, initial-scale=1.0">` is present
+- [x] `<meta name="color-scheme" content="dark">` is present
+- [x] `<meta name="description">` is present with the specified content
+- [x] Google Fonts preconnect links are present, URL includes `&display=swap`
+- [x] CSS is loaded in order: `reset.css` → `variables.css` → `styles.css`
+- [x] `main.js` is loaded with `defer`
+- [ ] Exactly one `<h1>` exists on the page *(pending: Hero section)*
+- [ ] All 9 sections are present with correct `id` attributes *(pending: sections 2–9)*
+- [x] `<nav>` has `aria-label="Main navigation"`
+- [x] Mobile hamburger button has `aria-label` and `aria-expanded`
 
 ### Design Tokens
-- [ ] `css/variables.css` contains all tokens from Section 3
-- [ ] No raw hex color values appear in `css/styles.css`
-- [ ] No raw pixel spacing values appear in `css/styles.css` (except 0)
+- [x] `css/variables.css` contains all tokens from Section 3
+- [x] No raw hex color values appear in `css/styles.css`
+- [x] No raw pixel spacing values appear in `css/styles.css` (except 0)
 
 ### Navigation
-- [ ] Logo text "Clarity" appears in accent color
-- [ ] All 4 nav links are present with correct `href` targets
-- [ ] "Start Free" button uses `btn--accent btn--sm`
-- [ ] Nav becomes `nav--scrolled` on scroll past 50px
-- [ ] Mobile menu is hidden by default on `< 768px`
-- [ ] Hamburger button is visible on `< 768px`
+- [x] Logo text "Clarity" appears in accent color
+- [x] All 4 nav links are present with correct `href` targets
+- [x] "Start Free" button uses `btn--accent btn--sm`
+- [x] Nav becomes `nav--scrolled` on scroll past 50px
+- [x] Mobile menu is hidden by default on `< 768px`
+- [x] Hamburger button is visible on `< 768px`
 
 ### Hero
 - [ ] Eyebrow label is present and styled as a pill (accent-muted background, accent text)
@@ -1026,41 +1026,41 @@ Before considering the build complete, every item below must pass.
 - [ ] Copyright row reads `© 2026 Clarity, Inc. All rights reserved.`
 
 ### CSS & Responsive
-- [ ] Mobile-first media queries are used throughout
-- [ ] Page is usable and readable at 375px viewport width
-- [ ] No horizontal scrollbar at any viewport width ≥ 320px
-- [ ] All cards stack to single column on mobile
-- [ ] `@media (prefers-reduced-motion: reduce)` disables animations
+- [x] Mobile-first media queries are used throughout
+- [ ] Page is usable and readable at 375px viewport width *(verify when all sections done)*
+- [ ] No horizontal scrollbar at any viewport width ≥ 320px *(verify when all sections done)*
+- [ ] All cards stack to single column on mobile *(pending: sections 4–7)*
+- [x] `@media (prefers-reduced-motion: reduce)` disables animations
 
 ### JavaScript
-- [ ] `initNavScroll` works correctly
-- [ ] `initMobileMenu` toggles menu and `aria-expanded`
-- [ ] `initSmoothScroll` intercepts all `#` anchor clicks with nav offset
-- [ ] `initAnimations` uses `IntersectionObserver` and applies `is-visible` with stagger
-- [ ] `initTypewriter` cycles through 4 phrases
-- [ ] `initModal` opens/closes with focus trap, ESC, backdrop click, validation, and success state
-- [ ] `initPricingToggle` updates prices and shows/hides annual note
-- [ ] No `var` declarations exist in `main.js`
-- [ ] No inline `onclick` handlers exist in `index.html`
-- [ ] No `console.log` statements in `main.js`
+- [x] `initNavScroll` works correctly
+- [x] `initMobileMenu` toggles menu and `aria-expanded`
+- [x] `initSmoothScroll` intercepts all `#` anchor clicks with nav offset
+- [ ] `initAnimations` uses `IntersectionObserver` and applies `is-visible` with stagger *(pending)*
+- [ ] `initTypewriter` cycles through 4 phrases *(pending: Hero section)*
+- [ ] `initModal` opens/closes with focus trap, ESC, backdrop click, validation, and success state *(pending)*
+- [ ] `initPricingToggle` updates prices and shows/hides annual note *(pending: Pricing section)*
+- [x] No `var` declarations exist in `main.js`
+- [x] No inline `onclick` handlers exist in `index.html`
+- [x] No `console.log` statements in `main.js`
 
 ### Sign-Up Modal
-- [ ] Modal opens when any `[data-open-modal]` element is clicked
-- [ ] Modal closes on ESC key
-- [ ] Modal closes on backdrop click
-- [ ] Tab key is trapped inside the modal panel
-- [ ] Empty form shows validation errors on both fields
-- [ ] Valid submission shows success message
-- [ ] Body scroll is locked while modal is open
+- [ ] Modal opens when any `[data-open-modal]` element is clicked *(pending)*
+- [ ] Modal closes on ESC key *(pending)*
+- [ ] Modal closes on backdrop click *(pending)*
+- [ ] Tab key is trapped inside the modal panel *(pending)*
+- [ ] Empty form shows validation errors on both fields *(pending)*
+- [ ] Valid submission shows success message *(pending)*
+- [ ] Body scroll is locked while modal is open *(pending)*
 
 ### Accessibility
-- [ ] Tab through the entire page — every interactive element receives a visible green focus ring
-- [ ] All text passes WCAG AA contrast (4.5:1 minimum)
-- [ ] Color is not the sole differentiator for any information
-- [ ] No `outline: none` without a custom focus style replacement
+- [ ] Tab through the entire page — every interactive element receives a visible green focus ring *(verify when all sections done)*
+- [x] All text passes WCAG AA contrast (4.5:1 minimum)
+- [x] Color is not the sole differentiator for any information
+- [x] No `outline: none` without a custom focus style replacement
 
 ### Performance
-- [ ] No render-blocking scripts
-- [ ] No third-party scripts are loaded
-- [ ] No `@import` in any CSS file
-- [ ] Google Fonts URL includes `&display=swap`
+- [x] No render-blocking scripts
+- [x] No third-party scripts are loaded
+- [x] No `@import` in any CSS file
+- [x] Google Fonts URL includes `&display=swap`
