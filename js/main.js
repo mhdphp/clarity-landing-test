@@ -184,6 +184,41 @@ const initModal = () => {
   });
 };
 
+const initTypewriter = () => {
+  const el = document.querySelector('.hero__heading-accent');
+  if (!el) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const fullText = el.textContent.trim();
+  const TYPING_SPEED = 60;
+  const TYPING_DELAY = 400;
+
+  const textNode = document.createTextNode('');
+  const cursor = document.createElement('span');
+  cursor.className = 'hero__cursor';
+  cursor.setAttribute('aria-hidden', 'true');
+
+  let i = 0;
+
+  const type = () => {
+    if (i < fullText.length) {
+      textNode.textContent = fullText.slice(0, i + 1);
+      i++;
+      setTimeout(type, TYPING_SPEED);
+    } else {
+      setTimeout(() => cursor.classList.add('hero__cursor--done'), 1200);
+    }
+  };
+
+  setTimeout(() => {
+    el.textContent = '';
+    el.appendChild(textNode);
+    el.appendChild(cursor);
+    type();
+  }, TYPING_DELAY);
+};
+
 const initPricingToggle = () => {
   const toggleBtn = document.querySelector('.pricing__toggle-btn');
   if (!toggleBtn) return;
@@ -215,4 +250,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initAnimations();
   initModal();
   initPricingToggle();
+  initTypewriter();
 });

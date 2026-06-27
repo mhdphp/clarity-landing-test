@@ -298,6 +298,28 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--color-accent);
 }
 
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.hero__cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.85em;
+  background: var(--color-accent);
+  vertical-align: middle;
+  animation: cursor-blink 900ms step-end infinite;
+  margin-left: var(--space-1);
+  user-select: none;
+}
+
+.hero__cursor--done {
+  animation: none;
+  opacity: 0;
+  transition: opacity var(--transition-slow);
+}
+
 .hero__sub {
   font-size: var(--font-size-md);
   color: var(--color-text-secondary);

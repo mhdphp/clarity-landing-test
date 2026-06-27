@@ -18,7 +18,7 @@ Track implementation status. Update this section as each piece is completed.
 | `css/reset.css` | ✅ Complete |
 | `css/variables.css` | ✅ All 50+ tokens defined |
 | `css/styles.css` | ✅ Complete — all sections, animations, modal |
-| `js/main.js` | ✅ Complete — 6 init functions (typewriter removed) |
+| `js/main.js` | ✅ Complete — 7 init functions (incl. typewriter) |
 | `assets/` | ✅ Directory created (no assets required) |
 
 ### Sections
@@ -812,6 +812,16 @@ Targets `.pricing__toggle-btn`. On click: toggle `aria-checked` between `"true"`
 - When monthly (`aria-checked="false"`): update all `[data-monthly]` elements to show their monthly value; hide all `.pricing__annual-note` elements (add `hidden`).
 - Toggle button visual: background switches between `var(--color-border)` (monthly) and `var(--color-accent)` (annual); thumb translates right.
 
+**7. `initTypewriter()`**
+Types out the `.hero__heading-accent` span ("Start Understanding It.") character by character on page load.
+
+- Checks `window.matchMedia('(prefers-reduced-motion: reduce)')` — if true, returns immediately and leaves the text static.
+- Waits `TYPING_DELAY = 400ms` before altering the DOM, so the full heading is visible during initial page render.
+- After the delay: clears the span, injects an empty text node + `<span class="hero__cursor" aria-hidden="true">` (no text content — cursor is a pure CSS 3×0.85em block).
+- Types one character every `TYPING_SPEED = 60ms` by appending to the text node.
+- After all characters are typed, waits 1200ms then adds `.hero__cursor--done` which sets `opacity: 0` (CSS transition fades cursor out).
+- CSS: `@keyframes cursor-blink` (step-end, 900ms) drives the blink on `.hero__cursor`; `.hero__cursor--done` kills the animation and fades to transparent.
+
 **Entry point:**
 ```js
 document.addEventListener('DOMContentLoaded', () => {
@@ -821,6 +831,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initAnimations();
   initModal();
   initPricingToggle();
+  initTypewriter();
 });
 ```
 
@@ -1026,6 +1037,7 @@ Before considering the build complete, every item below must pass.
 - [x] `initAnimations` uses `IntersectionObserver` and applies `is-visible` with stagger
 - [x] `initModal` opens/closes with focus trap, ESC, backdrop click, validation, and success state
 - [x] `initPricingToggle` updates prices and shows/hides annual note
+- [x] `initTypewriter` types out hero accent line with blinking cursor; respects `prefers-reduced-motion`
 - [x] No `var` declarations exist in `main.js`
 - [x] No inline `onclick` handlers exist in `index.html`
 - [x] No `console.log` statements in `main.js`
