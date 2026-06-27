@@ -79,3 +79,5 @@ Then visit `http://localhost:8080` (or whichever port is used).
 
 **Claude Code with Python, Power BI, Excel, PowerPoint & Word**  
 Available on Udemy — teaches how to leverage Claude Code across a variety of tools and project types.
+
+[Enroll on Udemy](https://www.udemy.com/course/claude-code-with-python-power-bi-excel-powerpoint-word/?couponCode=KEEPLEARNING)
