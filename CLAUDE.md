@@ -14,11 +14,11 @@ Track implementation status. Update this section as each piece is completed.
 
 | File | Status |
 |---|---|
-| `index.html` | 🔄 Partial — nav markup + head complete |
+| `index.html` | 🔄 Partial — head, nav, hero complete |
 | `css/reset.css` | ✅ Complete |
 | `css/variables.css` | ✅ All 50+ tokens defined |
-| `css/styles.css` | 🔄 Partial — base, container, buttons, nav |
-| `js/main.js` | 🔄 Partial — initNavScroll, initMobileMenu, initSmoothScroll |
+| `css/styles.css` | 🔄 Partial — base, container, buttons, nav, hero |
+| `js/main.js` | 🔄 Partial — initNavScroll, initMobileMenu, initSmoothScroll, initTypewriter |
 | `assets/` | ✅ Directory created (no assets required) |
 
 ### Sections
@@ -26,7 +26,7 @@ Track implementation status. Update this section as each piece is completed.
 | # | Section | HTML | CSS | JS |
 |---|---|---|---|---|
 | 1 | Navigation (`<nav>`) | ✅ | ✅ | ✅ |
-| 2 | Hero (`#hero`) | ⬜ | ⬜ | — |
+| 2 | Hero (`#hero`) | ✅ | ✅ | ✅ |
 | 3 | Social Proof (`#social-proof`) | ⬜ | ⬜ | — |
 | 4 | Features (`#features`) | ⬜ | ⬜ | — |
 | 5 | How It Works (`#how-it-works`) | ⬜ | ⬜ | — |
@@ -957,8 +957,8 @@ Before considering the build complete, every item below must pass.
 - [x] Google Fonts preconnect links are present, URL includes `&display=swap`
 - [x] CSS is loaded in order: `reset.css` → `variables.css` → `styles.css`
 - [x] `main.js` is loaded with `defer`
-- [ ] Exactly one `<h1>` exists on the page *(pending: Hero section)*
-- [ ] All 9 sections are present with correct `id` attributes *(pending: sections 2–9)*
+- [x] Exactly one `<h1>` exists on the page
+- [ ] All 9 sections are present with correct `id` attributes *(pending: sections 3–9)*
 - [x] `<nav>` has `aria-label="Main navigation"`
 - [x] Mobile hamburger button has `aria-label` and `aria-expanded`
 
@@ -1037,7 +1037,7 @@ Before considering the build complete, every item below must pass.
 - [x] `initMobileMenu` toggles menu and `aria-expanded`
 - [x] `initSmoothScroll` intercepts all `#` anchor clicks with nav offset
 - [ ] `initAnimations` uses `IntersectionObserver` and applies `is-visible` with stagger *(pending)*
-- [ ] `initTypewriter` cycles through 4 phrases *(pending: Hero section)*
+- [x] `initTypewriter` cycles through 4 phrases
 - [ ] `initModal` opens/closes with focus trap, ESC, backdrop click, validation, and success state *(pending)*
 - [ ] `initPricingToggle` updates prices and shows/hides annual note *(pending: Pricing section)*
 - [x] No `var` declarations exist in `main.js`
